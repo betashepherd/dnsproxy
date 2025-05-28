@@ -1,0 +1,151 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dnsproxy
+  labels:
+    app: dnsproxy
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: dnsproxy
+  name: dnsproxy
+  labels:
+    app: dnsproxy
+data:
+  private.key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDPK0efFPzFB48Q
+    1gtO0pRRak28/01b8Y8UKchCKDcTxgZm5TO7GpQhvQo9n2PJtM1qcdLx2XfnrpcO
+    fcAbXoVCHNW7zgIyE5iuV2+PY3rRi7CXezamWBdBiIy3SQH4rpYOPJMp8LRI1hn6
+    hLAdqQ5T3arQuZzwnLwGrzyBOKIS0hwI4SHzI05i8OlZDXzInLdysffpfbxUDdWg
+    ZRbGPTMi05OrXXuqZ4pdBpVJI6HdqJxer8490G55aeJa8mgINUqcnql/OK/9W+Ei
+    6z03Oz0wZgsqsPf+JHxppeiV+HfKDi3xpbqxk0VC7l6hsznY1ai+3mSaOQ/QgV+J
+    rsvUfbf1AgMBAAECggEAT4YYjxtaUDOvmlHfs1koL/xzbNo/ksyuFJpZUfPn+IIq
+    UPMooWj5dd4AAVmez33E4FhjFg1ZdqjROXHR/W+SDafN77KLqzdUg4/ytgME0U0i
+    83MLrlzgSHqnMXAn/pLd7QcZop7QRalR/ZVTmX8cjdroSAkIEmDH2HUJ77ySklA+
+    IkHlzmNP/AWpWZp8BQtQmX+Nj9mCiEBwKmoLkjPTw5nsRnA3HZgTzNfy72vbgFNV
+    hM5KU/vxXw88iqYULDBTW4shnBLCQqzej7yjrEY3MKi4CBAq1aJqyS1FV36cta6v
+    qnNj1gxrfuBTLKWCVmoysG7wMtzbxp3FDBHSExe+vQKBgQDupMDPMhUtR3Jo0zee
+    P+/ohgOS5PHa4uukB+eXRwSEuc6D3s1f6oFswMlRBTNdBYZpGVQ1Z5Bw2F2PhE+I
+    mwvFxgTlnEPr4IOtNpppX3K4S25SLmnPZX8BVXNhxSblQRBDwGM146JHRxLpOc6P
+    5oGQf+u0gYEb6/vL2yqLzfSydwKBgQDePIKqFRvIJ54THe3T38dsIwzwqQL/g8Qs
+    LF34/zuNIUqq3m/028eIUVC3JlQGpWhOEsY9ukC1qepeuasy2OlqA/NVZxGPnrXl
+    lNRuRrQuvBS/euMMFbp4Q6XeDC0f6Jo3UM4fJqdp1lRkC7N2bQGLkK0OffW+4Ww2
+    GAN1wZV38wKBgQDVypNRC7UdE1zTvCWfh/gNf8HD34csaQ5hrRM021KY9TyltvyW
+    aSf5ndy80MPrGgAIN8DQ9y7XaX6oDAiUgRJS48uPSCcxMbnFe51puTC1Gh6DUUFJ
+    o8vcDgmIFW97Aobnq3s10/CVmn6+oiMDl6WLJo6q7zoTIZ46SuYayS/mkQKBgQDQ
+    DUIeTIinxz8bkodWNUeTGvVAUFm4L/l1iUuokfmEVEh80qVpTF/uZIH2FHHRjwSp
+    IrZoj3eJGruJVrTJc3yBfZVOvKEaHXEYr054tsR0hCvAXyEz7RuW/23HBQsxtia5
+    5nIxg5RzZu22g6XNFpu9twHscUuhGZSex7hlg4eUtQKBgQDYH0mujxvvKyR+nrRO
+    dQfb3DrGHL54LmJ3/rV8ZdMcwq4j4yVRc6JC4iSLHT3tRoCYalRtiUbUjYxvNhLA
+    hCMMvwp6MtDEgzXHHtk2YH+QavaIOikUFRyXSl8nHLJv6kxZ1WoTs71fNn34HNts
+    sHnfcOzwFhmcCDZa9/XMrhyklA==
+    -----END PRIVATE KEY-----    
+
+  cert.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIDOTCCAiGgAwIBAgIUNYqXzUob4SYOCQ3c7Fp1BX97UhMwDQYJKoZIhvcNAQEL
+    BQAwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgMClNvbWUtU3RhdGUxITAfBgNVBAoM
+    GEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZDAeFw0yNTA1MjgxMDAyNDFaFw0zNTA1
+    MjYxMDAyNDFaMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEw
+    HwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwggEiMA0GCSqGSIb3DQEB
+    AQUAA4IBDwAwggEKAoIBAQDPK0efFPzFB48Q1gtO0pRRak28/01b8Y8UKchCKDcT
+    xgZm5TO7GpQhvQo9n2PJtM1qcdLx2XfnrpcOfcAbXoVCHNW7zgIyE5iuV2+PY3rR
+    i7CXezamWBdBiIy3SQH4rpYOPJMp8LRI1hn6hLAdqQ5T3arQuZzwnLwGrzyBOKIS
+    0hwI4SHzI05i8OlZDXzInLdysffpfbxUDdWgZRbGPTMi05OrXXuqZ4pdBpVJI6Hd
+    qJxer8490G55aeJa8mgINUqcnql/OK/9W+Ei6z03Oz0wZgsqsPf+JHxppeiV+HfK
+    Di3xpbqxk0VC7l6hsznY1ai+3mSaOQ/QgV+JrsvUfbf1AgMBAAGjITAfMB0GA1Ud
+    DgQWBBR3tDpD6y3AQYbzYugUFWPumsIzpjANBgkqhkiG9w0BAQsFAAOCAQEABJdW
+    iJsdjdZ+XgmxlPY1pY9QEpWIWTrMcP8pNlzrGltcJQJDvcC5uDdIKHJzAKU3c5QP
+    pdf91hqfUw9yG/vRw5Rh6Ab6TvzXE9PBrV1mJ5kWwjkSZe4ehu6HQgBTFoAbO3SK
+    frkJ8VeooqdUkfDiMXHNXlWhBdwQ7rKq0LYLD+XzeUYRGttLQPsaVvOwiANJ6YSI
+    /wR9daceiawkxYxpa/mGw0A3jaV200fIsBXawzM6jEZ0xgUr8tXTPrqpSmo3mwq7
+    msECOa44XJhe/NzQn/acXSKqqf4yT+SwERoAPjLgOfVysOzi2/Ky91dDgXZL1RVS
+    vkjT3OP4dBHVQy0K8Q==
+    -----END CERTIFICATE-----
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dnsproxy
+  name: dnsproxy
+  labels:
+    app: dnsproxy
+spec:
+  type: NodePort
+  selector:
+    app: dnsproxy
+  ports:
+    - name: dns
+      nodePort: 32013
+      port: 853
+      protocol: TCP
+      targetPort: 853
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dnsproxy
+  name: dnsproxy
+  labels:
+    app: dnsproxy
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: dnsproxy
+  template:
+    metadata:
+      labels:
+        app: dnsproxy
+    spec:
+      containers:
+        - name: dnsproxy
+          image: adguard/dnsproxy:v0.75.5
+          command:
+            - /opt/dnsproxy/dnsproxy
+            - --verbose
+            - --listen=0.0.0.0
+            - --tls-port=853
+            - --tls-crt=/opt/dnsproxy/cert.crt
+            - --tls-key=/opt/dnsproxy/private.key
+            - --upstream=https://1.1.1.1/dns-query
+            - --cache=true
+            - --timeout=10s
+            - --ratelimit=0
+            - --ratelimit-subnet-len-ipv4=24
+            - --ratelimit-subnet-len-ipv6=64
+          volumeMounts:
+            - name: cert-vol
+              mountPath: /opt/dnsproxy/cert.crt
+              subPath: cert.crt
+            - name: key-vol
+              mountPath: /opt/dnsproxy/private.key
+              subPath: private.key
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi
+      volumes:
+        - name: cert-vol
+          configMap:
+            name: dnsproxy
+            items:
+              - key: cert.crt
+                path: cert.crt
+        - name: key-vol
+          configMap:
+            name: dnsproxy
+            items:
+              - key: private.key
+                path: private.key
