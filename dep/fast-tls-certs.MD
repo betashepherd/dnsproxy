@@ -1,3 +1,7 @@
+## why do this 
+
+if you are puzzled by dns leak, do is just 1 minue you will have a self-host dot server and you will free now.
+
 ## fast gen self-signed tls certs
 
 ```bash
