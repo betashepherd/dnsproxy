@@ -113,13 +113,16 @@ spec:
             - /opt/dnsproxy/dnsproxy
             - --verbose
             - --bootstrap=1.1.1.1:53
-            - --edns-addr=101.132.81.133
             - --listen=0.0.0.0
             - --tls-port=853
             - --tls-crt=/opt/dnsproxy/cert.crt
             - --tls-key=/opt/dnsproxy/private.key
             - --upstream=https://1.1.1.1/dns-query
-            - --cache=true
+            - --cache
+            - --cache-optimistic
+            - --edns
+            - --edns-addr=101.132.81.133
+            - --cache-min-ttl=600
             - --timeout=10s
             - --ratelimit=0
             - --ratelimit-subnet-len-ipv4=24
