@@ -7,7 +7,7 @@ User=nobody
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/dnsproxy --port=32015 --verbose --bootstrap=1.1.1.1:53 --cache-optimistic --edns --edns-addr=171.93.199.84 --cache-min-ttl=600 --listen=0.0.0.0 --tls-port=32016 --tls-crt=/usr/local/etc/dnsproxy/cert.crt --tls-key=/usr/local/etc/dnsproxy/private.key --upstream=https://1.1.1.1/dns-query --cache --timeout=10s --ratelimit=0 --ratelimit-subnet-len-ipv4=24 --ratelimit-subnet-len-ipv6=64
+ExecStart=/usr/local/bin/dnsproxy --port=32015 --verbose --bootstrap=1.1.1.1:53 --pending-requests-enabled --cache-optimistic --edns --edns-addr=171.93.199.84 --cache-min-ttl=600 --listen=0.0.0.0 --tls-port=32016 --tls-crt=/usr/local/etc/dnsproxy/cert.crt --tls-key=/usr/local/etc/dnsproxy/private.key --upstream=https://1.1.1.1/dns-query --cache --timeout=10s --ratelimit=0 --ratelimit-subnet-len-ipv4=24 --ratelimit-subnet-len-ipv6=64
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
